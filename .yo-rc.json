@@ -1,0 +1,11 @@
+{
+  "generator-reveal": {
+    "presentationTitle": "Angular2",
+    "packageVersion": "1.0.0",
+    "revealTheme": "night",
+    "useSass": false,
+    "deployToGithubPages": true,
+    "githubUsername": "d3spis3d",
+    "githubRepository": "https://github.com/d3spis3d/angular2-pres"
+  }
+}
