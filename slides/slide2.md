@@ -1,7 +1,6 @@
-
 #Outline
 
-* Philosophy
+* Background
 * Significant differences
 * Similarities
 * Specifics
