@@ -1,36 +1,38 @@
 <section>
-<h1>Components</h1>
-<pre>
-  <code>
-  @Component({
-    selector:    'hero-list',
-    templateUrl: 'app/hero-list.component.html',
-    directives:  [HeroDetailComponent],
-    providers:   [HeroService]
-  })
-  export class HeroesComponent {
-    constructor(_service){
-      this.heroes = this._service.getHeroes();
-    }
-
-    selectHero(hero) {
-      this.selectedHero = hero;
-    }
-  }
-  </code>
-</pre>
+    <h1>Structural directives</h1>
+    <p>Built in Angular2 directives that modify the structure of templates</p>
 </section>
-
 <section>
-    <h1>Components</h1>
+    <h1>Structural directives</h1>
     <pre>
-      <code>
-      <h2>Hero List</h2>
-      <p><i>Pick a hero from the list</i></p>
-      <div *ngFor="#hero of heroes" (click)="selectHero(hero)">
-      {{hero.name}}
-      </div>
-      <hero-detail *ngIf="selectedHero" [hero]="selectedHero"></hero-detail>
-      </code>
+        <code>
+            <div>
+                &lt;div *ngFor="#value in values"&gt;{{value}}&lt;/div&gt;
+            </div>
+        </code>
+    </pre>
+</section>
+<section>
+    <h1>Structural directives</h1>
+    <pre>
+        <code>
+            <div>
+                &lt;div *ngIf="loading"&gt;Loading...&lt;/div&gt;
+            </div>
+        </code>
+    </pre>
+</section>
+<section>
+    <h1>Structural directives</h1>
+    <pre>
+        <code>
+            <div>
+                &lt;div [ngSwitch]="value"&gt;
+                    &lt;p *ngSwitchWhen="true"&gt;Happy&lt;/p&gt;
+                    &lt;p *ngSwitchWhen="false"&gt;Sad&lt;/p&gt;
+                    &lt;p *ngSwitchDefault&gt;Unknown&lt;/p&gt;
+                </div>
+            </div>
+        </code>
     </pre>
 </section>

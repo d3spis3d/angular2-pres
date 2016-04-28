@@ -1,6 +1,6 @@
 #Outline
 
 * Background
-* Significant differences
-* Similarities
-* Specifics
+* AngularJS vs Angular2
+* Angular2 Specifics
+* Migration

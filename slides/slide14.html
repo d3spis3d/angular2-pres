@@ -1,0 +1,42 @@
+<section>
+    <h1>Attribute directives</h1>
+    <p>Built in Angular2 directives that modify elements in a template</p>
+</section>
+<section>
+    <h1>Attribute directives</h1>
+    <pre>
+        <code>
+            &lt;div [ngClass]="setClasses()"&gt;This div is saveable and special&lt;/div&gt;
+        </code>
+    </pre>
+    <pre>
+        <code>
+            setClasses() {
+              let classes =  {
+                saveable: this.canSave,
+                special: this.isSpecial,
+              }
+              return classes;
+            }
+        </code>
+    </pre>
+</section>
+<section>
+    <h1>Attribute directives</h1>
+    <pre>
+        <code>
+            &lt;div [ngStyle]="setStyles()"&gt;This div is italic, normal weight&lt;/div&gt;
+        </code>
+    </pre>
+    <pre>
+        <code>
+            setStyles() {
+              let styles = {
+                'font-style':  this.canSave      ? 'italic' : 'normal',
+                'font-weight': !this.isUnchanged ? 'bold'   : 'normal'
+              }
+              return styles;
+            }
+        </code>
+    </pre>
+</section>
