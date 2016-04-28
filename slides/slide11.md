@@ -1,5 +1,17 @@
-# Components
+# Decorators
 
-- Take the role of Controller + View <!-- .element: class="fragment" data-fragment-index="1" -->
-- Controller and the View are more tightly coupled in Components <!-- .element: class="fragment" data-fragment-index="2" -->
-- Angular2 encourages us to push most of our logic out of the Controller and into Services <!-- .element: class="fragment" data-fragment-index="3" -->
+- Stage 1 ECMAScript proposal
+- Similar to Python decorators and Java annotations
+
+<pre>
+  <code>
+  // A simple decorator
+  @annotation
+  class MyClass { }
+
+  function annotation(target) {
+   // Add a property on target
+   target.annotated = true;
+  }
+  </code>
+</pre>
