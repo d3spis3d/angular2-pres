@@ -1,0 +1,46 @@
+<section>
+    <h1>Communication</h1>
+    <pre>
+        <code>
+            @Component({
+              selector: 'my-voter',
+              template: `
+                <h4>{{name}}</h4>
+                <button (click)="vote(true)"  [disabled]="voted">Agree</button>
+                <button (click)="vote(false)" [disabled]="voted">Disagree</button>
+              `
+            })
+            export class VoterComponent {
+              @Input()  name;
+              @Output() onVoted = new EventEmitter();
+              voted = false;
+              vote(agreed){
+                this.onVoted.emit(agreed);
+                this.voted = true;
+              }
+            }
+        </code>
+    </pre>
+</section>
+
+<section>
+    <h1>Communication</h1>
+    <pre>
+        <code>
+            @Component({
+              selector: 'vote-taker',
+              template: `
+                <h2>Should mankind colonize the Universe?</h2>
+                &lt;my-voter [name]="voter" (onVoted)="onVoted($event)"&gt;&lt;/my-voter&gt;
+              `,
+              directives: [VoterComponent]
+            })
+            export class VoteTakerComponent {
+              voter = 'Mr Voter';
+              onVoted(agreed) {
+                this.sendVoteToServer(agreed);
+              }
+            }
+        </code>
+    </pre>
+</section>

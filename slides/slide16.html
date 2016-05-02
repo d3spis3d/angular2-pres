@@ -1,0 +1,40 @@
+<section>
+    <h1>Data binding syntax</h1>
+    <ul>
+        <li>One way into child components / DOM</li>
+        <li>One way out of child components / DOM</li>
+        <li>Two way</li>
+    </ul>
+</section>
+
+<section>
+    <h1>One way into</h1>
+    <pre>
+        <code>
+            &lt;hero-detail *ngIf="selectedHero" [hero]="selectedHero"&gt;&lt;/hero-detail&gt;
+        </code>
+    </pre>
+</section>
+
+<section>
+    <h1>One way out</h1>
+    <pre>
+        <code>
+            &lt;div *ngFor="#hero of heroes" (click)="selectHero(hero)"&gt;
+        </code>
+    </pre>
+</section>
+
+<section>
+    <h1>Two way</h1>
+    <pre>
+        <code>
+            <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+        </code>
+    </pre>
+</section>
+
+<section>
+    <h1>Two way</h1>
+    <img src="https://c2.staticflickr.com/2/1216/919636151_13a63033af.jpg">
+</section>
