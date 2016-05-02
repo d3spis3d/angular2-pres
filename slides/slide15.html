@@ -9,6 +9,10 @@
     providers:   [HeroService]
   })
   export class HeroesComponent {
+    static get parameters() {
+        return [[HeroService]]
+    }
+    
     constructor(_service){
       this.heroes = this._service.getHeroes();
     }

@@ -1,0 +1,30 @@
+<section>
+    <h1>Services</h1>
+    <ul>
+        <li>Handle most of the business logic of Angular2 apps</li>
+        <li>Communicate with the backend to load/store data</li>
+        <li>Much the same of AngularJS services</li>
+    </ul>
+</section>
+
+<section>
+    <h1>Services</h1>
+    <pre>
+        <code>
+            @Injectable
+            export class HeroService {
+                static get parameters() {
+                    return [[BackendService]];
+                }
+
+                constructor(backendService) {
+                    this._backend = backendService;
+                }
+
+                getHeroes() {
+                    return this._backend.get('/api/v1/heroes');
+                }
+            }
+        </code>
+    </pre>
+</section>
