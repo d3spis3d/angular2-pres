@@ -1,0 +1,41 @@
+<section>
+    <h1>Routing</h1>
+    <ul>
+        <li>Angular2 provides a more powerful router implementation</li>
+    </ul>
+</section>
+
+<section>
+    <h1>Routing</h1>
+    <pre>
+        <code>
+            @Component({ ... })
+            @RouteConfig([
+              {path:'/crisis-center', name: 'CrisisCenter', component: CrisisListComponent},
+              {path:'/heroes',        name: 'Heroes',       component: HeroListComponent},
+              {path:'/hero/:id',      name: 'HeroDetail',   component: HeroDetailComponent}
+            ])
+            export class AppComponent { }
+        </code>
+    </pre>
+</section>
+
+<section>
+    <h1>Routing</h1>
+    <pre>
+        <code>
+            @Component({
+                template: `
+                  <h1>Component Router</h1>
+                  <nav>
+                    &lt;a [routerLink]="['CrisisCenter']"&gt;Crisis Center</a>
+                    &lt;a [routerLink]="['Heroes']"&gt;Heroes</a>
+                  </nav>
+                  <router-outlet></router-outlet>
+                `,
+            })
+            @RouteConfig([ ... ])
+            export class AppComponent { }
+        </code>
+    </pre>
+</section>

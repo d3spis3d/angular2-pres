@@ -1,4 +1,4 @@
-#Migrate to Ng2?
+#Migrate?
 
 * Angular2 is not similar enough to AngularJS to make developer transition simple <!-- .element: class="fragment" data-fragment-index="1" -->
 * Complexity around Typescript ecosystem <!-- .element: class="fragment" data-fragment-index="2" -->
