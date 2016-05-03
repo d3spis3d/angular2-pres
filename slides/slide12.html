@@ -1,7 +1,15 @@
 <section>
     <h1>Structural directives</h1>
     <p>Built in Angular2 directives that modify the structure of templates</p>
+
+    <aside class="notes">
+        <ul>
+            <li>Angular2 comes with some built in directives for modifying the structure of components templates</li>
+            <li>These are generally similar to AngularJS built in directives but with different syntax</li>
+        </ul>
+    </aside>
 </section>
+
 <section>
     <h1>Structural directives</h1>
     <pre>
@@ -11,7 +19,16 @@
             </div>
         </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>ngFor is a replacement for the ngRepeat directive of AngularJS</li>
+            <li>The leading asterix is required syntax and the # symbol marks that we are declaring the local variable value in the template</li>
+            <li>ngFor with create as many copies of the div for each of the values in the values variable passing in from the component</li>
+        </ul>
+    </aside>
 </section>
+
 <section>
     <h1>Structural directives</h1>
     <pre>
@@ -21,7 +38,14 @@
             </div>
         </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>ngIf is almost the same as AngularJS equivalent except the for the new syntax</li>
+        </ul>
+    </aside>
 </section>
+
 <section>
     <h1>Structural directives</h1>
     <pre>
@@ -35,4 +59,12 @@
             </div>
         </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>ngSwitch is a new directive introduced for the case where we normally have a bunch of ngIf's where only one is active at a time</li>
+            <li>You will notice the [ brace notation which I will get to in a moment</li>
+            <li>Here depending on the what the value variable passed from the component is we will show one of these three p elements</li>
+        </ul>
+    </aside>
 </section>
