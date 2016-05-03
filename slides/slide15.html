@@ -6,13 +6,12 @@
     selector:    'hero-list',
     templateUrl: 'app/hero-list.component.html',
     directives:  [HeroDetailComponent],
-    providers:   [HeroService]
   })
   export class HeroesComponent {
     static get parameters() {
         return [[HeroService]]
     }
-    
+
     constructor(_service){
       this.heroes = this._service.getHeroes();
     }

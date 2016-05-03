@@ -1,3 +1,64 @@
 <section>
     <h1>Dependency Injection</h1>
+    <ul>
+        <li>Angular2 provides a dependency system similar to AngularJS</li>
+        <li class="fragment">When using TypeScript dependency inject is simple</li>
+        <li class="fragment">ES6 is a little more work</li>
+</section>
+
+<section>
+    <h1>DI - TypeScript</h1>
+    <pre>
+        <code>
+            @Component({
+              ....
+              providers:   [HeroService, CacheService]
+            })
+            export class HeroesComponent {
+                constructor(service : HeroService, cache: CacheService) {
+                    this._service = service;
+                    this._cache = cache;
+                }
+            }
+        </code>
+    </pre>
+</section>
+
+<section>
+    <h1>DI - ES6</h1>
+    <pre>
+        <code>
+            @Component({
+                ....
+            })
+            export class HeroesComponent {
+                static get parameters() {
+                    return [[HeroService], [CacheService]];
+                }
+
+                constructor(service, cache) {
+                    this._service = service;
+                    this._cache = cache;
+                }
+            }
+        </code>
+    </pre>
+</section>
+
+<section>
+    <h1>DI - ES6 + Plugin</h1>
+    <p>babel-plugin-angular2-annotations</p>
+    <pre>
+        <code>
+            @Component({
+                ....
+            })
+            export class HeroesComponent {
+                constructor(service : HeroService, cache: CacheService) {
+                    this._service = service;
+                    this._cache = cache;
+                }
+            }
+        </code>
+    </pre>
 </section>
