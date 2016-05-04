@@ -1,8 +1,14 @@
 <section>
     <h1>Routing</h1>
     <ul>
-        <li>Angular2 provides a more powerful router implementation</li>
+        <li>Angular2 provides a router implementation</li>
     </ul>
+
+    <aside class="notes">
+        <ul>
+            <li>Like AngularJS, Angular2 provides a routing for SPA built with it and this router seems a bit more flexible than the ngRoute provided with AngularJS</li>
+        </ul>
+    </aside>
 </section>
 
 <section>
@@ -18,6 +24,14 @@
             export class AppComponent { }
         </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>At the top level of the application there will be this top level AppComponent</li>
+            <li>It is here that the router is configured with this RouteConfig decorator</li>
+            <li>Each route has a url path, name and Component to be rendered</li>
+        </ul>
+    </aside>
 </section>
 
 <section>
@@ -38,4 +52,12 @@
             export class AppComponent { }
         </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>Looking at the AppComponents template we can see the router-outlet directive. When a route is matched the corresponding component will be rendered into this element</li>
+            <li>Angular2 also provides the routerLink directive which will be replaced with a link to the corresponding route</li>
+            <li>I'm a bit unsure at the moment how well this approach is going to scale for large apps with complex routing configuration?</li>
+        </ul>
+    </aside>
 </section>

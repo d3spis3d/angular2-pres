@@ -2,8 +2,18 @@
     <h1>Dependency Injection</h1>
     <ul>
         <li>Angular2 provides a dependency system similar to AngularJS</li>
-        <li class="fragment">When using TypeScript dependency inject is simple</li>
+        <li class="fragment">When using TypeScript dependency injection is simple</li>
         <li class="fragment">ES6 is a little more work</li>
+    </ul>
+
+    <aside class="notes">
+        <ul>
+            <li>One of the great features of AngularJS was it's dependency injection system</li>
+            <li>Angular2 provides a very similar DI system, although with syntactic differences</li>
+            <li>When using Angular2 with TypeScript DI is a piece of cake</li>
+            <li>When using Angular2 with ES6 JS DI is a bit more work</li>
+        </ul>
+    </aside>
 </section>
 
 <section>
@@ -22,10 +32,18 @@
             }
         </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>Here is an example of DI with TypeScript</li>
+            <li>We provide as array of dependencies in the 'providers' key of the Component decorator and then specify typing for out constructor arguments</li>
+            <li>Nice and clean</li>
+        </ul>
+    </aside>
 </section>
 
 <section>
-    <h1>DI - ES6</h1>
+    <h1>DI - ESNext</h1>
     <pre>
         <code>
             @Component({
@@ -43,6 +61,16 @@
             }
         </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>Here is the same example but written in ES6+</li>
+            <li>We can't use the providers key in the decorator, we need to use a static parameters attribute on the class which is an ECMAScript proposal</li>
+            <li>The static parameters attribute returns an array of dependencies for the Component</li>
+            <li>Angular2 can use these dependency types to call the constructor of the Component</li>
+            <li>Thanks to the community we can do a bit better</li>
+        </ul>
+    </aside>
 </section>
 
 <section>
@@ -54,11 +82,18 @@
                 ....
             })
             export class HeroesComponent {
-                constructor(service : HeroService, cache: CacheService) {
+                constructor(service : HeroService, cache : CacheService) {
                     this._service = service;
                     this._cache = cache;
                 }
             }
         </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>Someone has created a BabelJS plugin which simplifies dependency injection for non-TypeScript Angular2</li>
+            <li>We can specify the dependency types in the constructor, like we would TypeScript, and the plugin will do the rest of the work</li>
+        </ul>
+    </aside>
 </section>

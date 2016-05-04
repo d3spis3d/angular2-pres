@@ -11,7 +11,7 @@
               `
             })
             export class VoterComponent {
-              @Input()  name;
+              @Input() name;
               @Output() onVoted = new EventEmitter();
               voted = false;
               vote(agreed){
@@ -21,6 +21,16 @@
             }
         </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>So now that we have seen how data binding works we can look at communication between Components</li>
+            <li>Angular2 provides the EventEmitter class that we can use to pass data up from our child Components to their parents</li>
+            <li>Here we have a VoterComponent, which is our child Component and it has defined using decorators input and outputs</li>
+            <li>It uses the EventEmitter to emit a vote event when its child button elements are clicked</li>
+            <li>It received data from the click handler of the button, and passes data up to its parent</li>
+        </ul>
+    </aside>
 </section>
 
 <section>
@@ -43,4 +53,11 @@
             }
         </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>This is the parent VoteTakerComponent, which has a child VoterComponent</li>
+            <li>As you can see in the template this Component receives data from its childs onVoted event emitter</li>
+        </ul>
+    </aside>
 </section>
