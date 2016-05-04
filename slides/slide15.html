@@ -1,27 +1,35 @@
 <section>
-<h1>Components</h1>
-<pre>
-  <code>
-  @Component({
-    selector:    'hero-list',
-    templateUrl: 'app/hero-list.component.html',
-    directives:  [HeroDetailComponent],
-  })
-  export class HeroesComponent {
-    static get parameters() {
-        return [[HeroService]]
-    }
+    <h1>Components</h1>
+    <pre>
+      <code>
+          @Component({
+            selector:    'hero-list',
+            templateUrl: 'app/hero-list.component.html',
+            directives:  [HeroDetailComponent],
+          })
+          export class HeroesComponent {
+            static get parameters() {
+                return [[HeroService]]
+            }
 
-    constructor(_service){
-      this.heroes = this._service.getHeroes();
-    }
+            constructor(_service){
+              this.heroes = this._service.getHeroes();
+            }
 
-    selectHero(hero) {
-      this.selectedHero = hero;
-    }
-  }
-  </code>
-</pre>
+            selectHero(hero) {
+              this.selectedHero = hero;
+            }
+          }
+      </code>
+    </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>So here is what a Component looks like in Angular2</li>
+            <li>We have a Component decorator that declares the DOM selector, templateUrl, and child Component directives of this Component</li>
+            <li>The Component itself is an ES6 class</li>
+        </ul>
+    </aside>
 </section>
 
 <section>
@@ -36,4 +44,12 @@
       &lt;hero-detail *ngIf="selectedHero" [hero]="selectedHero"&gt;&lt;/hero-detail&gt;
       </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>This is the Components template</li>
+            <li>Can see rending a list of heroes from the components data</li>
+            <li>Conditionally rendering a child HeroDetailComponent</li>
+        </ul>
+    </aside>
 </section>

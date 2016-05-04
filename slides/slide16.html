@@ -5,6 +5,13 @@
         <li>One way out of child components / DOM</li>
         <li>Two way</li>
     </ul>
+
+    <aside class="notes">
+        <ul>
+            <li>Before I mentioned changes to the way data binding works compared to AngularJS</li>
+            <li>In Angular2 we have 3 kinds of data binding, and each has a different syntax and purpose</li>
+        </ul>
+    </aside>
 </section>
 
 <section>
@@ -14,6 +21,14 @@
             &lt;hero-detail *ngIf="selectedHero" [hero]="selectedHero"&gt;&lt;/hero-detail&gt;
         </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>Here we have One way data binding into a child component</li>
+            <li>The square braces denote that data is passing from the component to a child component or DOM element</li>
+            <li>Here the selectedHero variable of our HeroesComponent is being passed into the hero variable of our HeroDetailComponent</li>
+        </ul>
+    </aside>
 </section>
 
 <section>
@@ -23,6 +38,14 @@
             &lt;div *ngFor="#hero of heroes" (click)="selectHero(hero)"&gt;
         </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>Here were have One way data binding out of a DOM element into the component who's template this is</li>
+            <li>The parentheses denote data being passed from a child component or DOM element to the parent component</li>
+            <li>In this example the one way data flow is from a click handler on the div in to the HeroesComponent</li>
+        </ul>
+    </aside>
 </section>
 
 <section>
@@ -32,6 +55,15 @@
             <input [(ngModel)]="selectedHero.name" placeholder="name"/>
         </code>
     </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>Lastly we have two way data binding which we will be familiar with from AngularJS</li>
+            <li>With two way data binding changes in the DOM element or Component will be reflected in the other as well</li>
+            <li>In this example the selectedHeroes name attribute is bound to the value of the input element</li>
+            <li>Two way data binding is denoted by this parentheses in braces syntax, which Angular2 recommends you remember by thinking of it as bananas in a box</li>
+        </ul>
+    </aside>
 </section>
 
 <section>
