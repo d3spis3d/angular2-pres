@@ -3,9 +3,181 @@
     <ul>
         <li>The migration AngularJS to Angular2 has been designed to be as easy as possible</li>
         <li class="fragment">There is the ability to run AngularJS and Angular2 code in the same application</li>
+        <li class="fragment">Few things we need before we get there</li>
     </ul>
+
+    <aside class="notes">
+        <ul>
+            <li>Angular2 has been designed so that the migration from AngularJS is as easy as possible</li>
+            <li>To aid this, there is the ability to run AngularJS and Angular 2 code together in the same application</li>
+            <li>This means we can our application to Angular2 piece by piece rather than having to do a rewrite</li>
+            <li>There are a few thing we need to do before we get there however</li>
+        </ul>
+    </aside>
 </section>
 
 <section>
     <h1>Migration</h1>
+    <p>To integrate Angular2 and AngularJS we need:</p>
+    <ul>
+        <li class="fragment">To be on AngularJS 1.5</li>
+        <li class="fragment">To be using a module loader, SystemJS, Webpack, Browserify</li>
+        <li class="fragment">Refactor our AngularJS directives to Angular2 style directives</li>
+        <li class="fragment">Migrate to TypeScript (recommended but not necessary)</li>
+    </ul>
+
+    <aside class="notes">
+        <ul>
+            <li>To integrate with Angular2 we need to be on AngularJS 1.5</li>
+            <li>Setup our application to use a module loader, Angular2 recommends SystemJS but Webpack or Browserify can also work</li>
+            <li>Refactoring our AngularJS directives to Angular2 style directive is helpful</li>
+            <li>Angular2 recommend of course to migrate to TS</li>
+        </ul>
+    </aside>
+</section>
+
+<section>
+    <h1>Migration</h1>
+    <pre>
+        <code>
+            <body ng-app="heroApp" ng-strict-di>
+                <div id="message" ng-controller="MainCtrl as mainCtrl">{{ mainCtrl.message }}</div>
+            </body>
+        </code>
+    </pre>
+    <pre>
+        <code>
+            angular.bootstrap(document.body, ['heroApp'], {strictDi: true});
+        </code>
+    </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>Once we have completed those steps we need to change our application bootstrap approach</li>
+            <li>Typically we would bootstrap the app using the ng-app directive in the index.html file</li>
+            <li>To use Angular2 in the app we need to change to bootstraping the app from JS</li>
+        </ul>
+    </aside>
+</section>
+
+<section>
+    <h1>Migration</h1>
+    <pre>
+        <code>
+            import { UpgradeAdapter } from '@angular/upgrade';
+            /* . . . */
+            const upgradeAdapter = new UpgradeAdapter();
+            upgradeAdapter.bootstrap(document.body, ['heroApp'], {strictDi: true});
+        </code>
+    </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>Then once we have installed Angular2 into the project we can bootstrap our hybrid app with the Angular2 upgrade adapter like so</li>
+        </ul>
+    </aside>
+</section>
+
+<section>
+    <h1>Migration</h1>
+    <pre>
+        <code>
+            import { HeroDetailComponent } from './hero-detail.component';
+
+            /* . . . */
+            angular.module('heroApp', [])
+              .directive('heroDetail', upgradeAdapter.downgradeNg2Component(HeroDetailComponent));
+        </code>
+    </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>We can now take our Angular2 HeroDetailComponent and use it in our AngularJS app using the upgradeAdapter to downgrade it to a compatible directive</li>
+        </ul>
+    </aside>
+</section>
+
+<section>
+    <h1>Migration</h1>
+    <pre>
+        <code>
+            <div ng-controller="MainController as mainCtrl">
+              <hero-detail [hero]="mainCtrl.hero"
+                          (deleted)="mainCtrl.onDelete($event)">
+              </hero-detail>
+            </div>
+        </code>
+    </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>Now that we have registered our Angular2 component in the AngularJS application we can use it like a typical directive</li>
+            <li>Although notice that we are using the Angular2 data binding syntax, this is handled by the upgradeAdapter</li>
+            <li>In this way we can replace piece by piece with Angular2 code</li>
+        </ul>
+    </aside>
+</section>
+
+<section>
+    <h1>Migration</h1>
+    <p>Angular2 style AngularJS directives</p>
+    <pre>
+        <code>
+            export function heroDetailDirective() {
+              return {
+                scope: {},
+                bindToController: {
+                  hero: '=',
+                  deleted: '&'
+                },
+                template: `
+                  <h2>{{ctrl.hero.name}} details!</h2>
+                  <div><label>id: </label>{{ctrl.hero.id}}</div>
+                  <button ng-click="ctrl.onDelete()">Delete</button>
+                `,
+                controller: function() {
+                  this.onDelete = () => {
+                    this.deleted({hero: this.hero});
+                  };
+                },
+                controllerAs: 'ctrl'
+              }
+            }
+        </code>
+    </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>Here is an example of an Angular2 style AngularJS directive</li>
+            <li>The benefits of refactoring our directives to this style is that they are compatible to be run from an Angular2 application</li>
+            <li>Once we move most of the functionality to Angular2 Components we can move the application to Angular2 and these directives can still be used until converted to Angular2/li>
+        </ul>
+    </aside>
+</section>
+
+<section>
+    <h1>Migration</h1>
+    <pre>
+        <code>
+            import { Component } from '@angular/core';
+            import { upgradeAdapter } from './upgrade_adapter';
+            const HeroDetail = upgradeAdapter.upgradeNg1Component('heroDetail');
+            @Component({
+              selector: 'my-container',
+              template: `
+                <h1>Tour of Heroes</h1>
+                <hero-detail></hero-detail>
+              `,
+              directives: [HeroDetail]
+            })
+            export class ContainerComponent {
+            }
+        </code>
+    </pre>
+
+    <aside class="notes">
+        <ul>
+            <li>Once we have refactored our directives we can upgrade them to Angular2 Components in our Angular2 application using the upgradeAdapter</li>
+        </ul>
+    </aside>
 </section>
