@@ -40,9 +40,11 @@
     <h1>Migration</h1>
     <pre>
         <code>
-            <body ng-app="heroApp" ng-strict-di>
-                <div id="message" ng-controller="MainCtrl as mainCtrl">{{ mainCtrl.message }}</div>
-            </body>
+            &lt;body ng-app="heroApp" ng-strict-di&gt;
+                &lt;div id="message" ng-controller="MainCtrl as mainCtrl"&gt;
+                    {{ mainCtrl.message }}
+                &lt;/div&gt;
+            &lt;/body&gt;
         </code>
     </pre>
     <pre>
@@ -86,7 +88,9 @@
 
             /* . . . */
             angular.module('heroApp', [])
-              .directive('heroDetail', upgradeAdapter.downgradeNg2Component(HeroDetailComponent));
+            .directive('heroDetail',
+                upgradeAdapter.downgradeNg2Component(HeroDetailComponent)
+            );
         </code>
     </pre>
 
@@ -101,11 +105,11 @@
     <h1>Migration</h1>
     <pre>
         <code>
-            <div ng-controller="MainController as mainCtrl">
-              <hero-detail [hero]="mainCtrl.hero"
-                          (deleted)="mainCtrl.onDelete($event)">
-              </hero-detail>
-            </div>
+            &lt;div ng-controller="MainController as mainCtrl"&gt;
+              &lt;hero-detail [hero]="mainCtrl.hero"
+                  (deleted)="mainCtrl.onDelete($event)"&gt;
+              &lt;/hero-detail&gt;
+            &lt;/div&gt;
         </code>
     </pre>
 

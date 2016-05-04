@@ -39,8 +39,8 @@
       <h2>Hero List</h2>
       <p><i>Pick a hero from the list</i></p>
       &lt;div *ngFor="#hero of heroes" (click)="selectHero(hero)"&gt;
-      {{hero.name}}
-      </div>
+          {{hero.name}}
+      &lt;/div&gt;
       &lt;hero-detail *ngIf="selectedHero" [hero]="selectedHero"&gt;&lt;/hero-detail&gt;
       </code>
     </pre>
